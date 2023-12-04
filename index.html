@@ -1,57 +1,42 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-
+<html lang="cn">
 <head>
     <meta charset="UTF-8">
     <title>针灸取穴系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             background-color: #D3D9E5;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
+            text-align: center;
         }
-
         .iframe-container {
+            border: 2px solid black;
+            margin: 20px auto;
             width: 80%;
-            max-width: 800px;
-            border: 2px solid #000;
-            border-radius: 8px;
-            overflow: hidden;
+            max-width: 600px;
         }
-
-        .iframe-container iframe {
+        iframe {
             width: 100%;
-            height: 500px;
+            height: 400px;
             border: none;
         }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        a {
-            text-decoration: none;
-            color: #000;
+        .usdz-model {
+            margin-top: 20px;
         }
     </style>
 </head>
-
 <body>
     <h1>针灸取穴系统</h1>
     <div class="iframe-container">
-        <!-- 嵌入网址 -->
-        <iframe src="https://xinghuo.xfyun.cn/" frameborder="0"></iframe>
+        <iframe src="https://xinghuo.xfyun.cn/bot" frameborder="0"></iframe>
     </div>
-    <!-- 插入usdz模型的链接 -->
-    <p><a href="https://gitee.com/hansonnack/accu2htmlartest/raw/main/male-base-mesh.quads.usdz">模型链接</a></p>
-    <!-- 插入超链接跳转到特定App -->
-    <p><a href="com.yunshuimozi.arkitfacexuewei">特定App链接</a></p>
+    <div class="usdz-model">
+        <!-- 在这里替换成你的 USDZ 模型链接 -->
+        <model-viewer src="https://fastly.jsdelivr.net/gh/hansonnack/accu2htmlartest@main/male-base-mesh.quads.usdz" alt="USDZ Model" auto-rotate camera-controls></model-viewer>
+    </div>
+    <p>
+        <!-- 这里替换成你想要跳转的 app 链接 -->
+        <a href="https://apps.apple.com/cn/app/%E7%A9%B4%E4%BD%8D%E8%AF%86%E5%88%ABar/id1626676536" target="_blank">点击这里看看穴位在哪里 App</a>
+    </p>
 </body>
-
 </html>
