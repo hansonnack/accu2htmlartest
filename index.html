@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="cn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>针灸取穴系统</title>
@@ -8,6 +8,9 @@
         body {
             background-color: #D3D9E5;
             text-align: center;
+        }
+        .logo {
+            margin-top: 20px;
         }
         .iframe-container {
             border: 2px solid black;
@@ -20,23 +23,31 @@
             height: 400px;
             border: none;
         }
-        .usdz-model {
+        .app-link {
+            margin-top: 20px;
+        }
+        .usdz-model-link {
+            display: inline-block;
             margin-top: 20px;
         }
     </style>
 </head>
 <body>
+    <div class="logo">
+        <!-- 在这里替换成你的 logo 图片链接 -->
+        <img src="https://p.ananas.chaoxing.com/star3/351_351Q50/166a24a0a23f624ea5350e9f99fa4fbf.png?rw=351&rh=351&_fileSize=9385&_orientation=1" alt="Logo">
+    </div>
     <h1>针灸取穴系统</h1>
     <div class="iframe-container">
         <iframe src="https://xinghuo.xfyun.cn/bot" frameborder="0"></iframe>
     </div>
-    <div class="usdz-model">
-        <!-- 在这里替换成你的 USDZ 模型链接 -->
-        <model-viewer src="https://fastly.jsdelivr.net/gh/hansonnack/accu2htmlartest@main/male-base-mesh.quads.usdz" alt="USDZ Model" auto-rotate camera-controls></model-viewer>
-    </div>
-    <p>
+    <div class="app-link">
         <!-- 这里替换成你想要跳转的 app 链接 -->
-        <a href="https://apps.apple.com/cn/app/%E7%A9%B4%E4%BD%8D%E8%AF%86%E5%88%ABar/id1626676536" target="_blank">点击这里看看穴位在哪里 App</a>
-    </p>
+        <p><a href="https://apps.apple.com/cn/app/%E7%A9%B4%E4%BD%8D%E8%AF%86%E5%88%ABar/id1626676536" target="_blank">点击这里看看穴位在哪里</a></p>
+    </div>
+    <div class="usdz-model-link">
+        <!-- 在这里替换成你的 USDZ 模型链接 -->
+        <p><a href="https://fastly.jsdelivr.net/gh/hansonnack/accu2htmlartest@main/male-base-mesh.quads.usdz" target="_blank">查看人体穴位模型</a></p>
+    </div>
 </body>
 </html>
