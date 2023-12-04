@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>针灸取穴系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 样式部分 */
+        body {
+            background-color: #efefd5;
+            text-align: center;
+            font-family: '黑体', sans-serif; /* 修改标题默认使用黑体字体 */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-family: '黑体', sans-serif; /* 标题使用黑体字体 */
+            margin-top: 20px;
+        }
+        .chat-container {
+            border: 2px solid black;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+        }
+        #chat-log {
+            overflow-y: scroll;
+            max-height: 200px;
+            margin-bottom: 10px;
+        }
+        #chat-log div {
+            margin-bottom: 5px;
+        }
+        .input-container {
+            margin-bottom: 20px;
+        }
+        .buttons-container {
+            display: flex;
+            justify-content: center; /* 居中按钮 */
+            gap: 20px; /* 按钮之间的距离 */
+            margin-bottom: 50px; /* 改变按钮和Logo之间的距离 */
+        }
+        .button {
+            padding: 10px 20px;
+            border: 2px solid black;
+            text-decoration: none;
+            color: black;
+            border-radius: 10px; /* 圆角矩形 */
+        }
+        .logo {
+            margin-top: 20px; /* 调整 Logo 位置 */
+            clear: both; /* 清除浮动 */
+        }
+        .logo-image {
+            max-width: 200px; /* 设置 Logo 图片宽度 */
+            display: block; /* 使 Logo 图片居中 */
+            margin: 0 auto; /* 居中 */
+        }
+    </style>
+</head>
+<body>
+    <!-- WebSocket 对话框部分 -->
+    <h1>针灸取穴系统</h1>
+    <div class="chat-container">
+        <div id="chat-log"></div>
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="输入消息...">
+            <button id="send-btn" onclick="sendMessage()">发送</button>
+        </div>
+    </div>
+
+    <!-- 两个超链接按钮 -->
+    <div class="buttons-container">
+        <a href="https://fastly.jsdelivr.net/gh/hansonnack/accu2htmlartest@main/male-base-mesh.quads.usdz" class="button" target="_blank">查看人体穴位模型</a>
+        <a href="https://apps.apple.com/cn/app/%E7%A9%B4%E4%BD%8D%E8%AF%86%E5%88%ABar/id1626676536" class="button" target="_blank">点击这里下载 app</a>
+    </div>
+
+    <!-- Logo 部分 -->
+    <div class="logo">
+        <img class="logo-image" src="https://fastly.jsdelivr.net/gh/hansonnack/accu2htmlartest@main/OIG.jpg" alt="Logo">
+    </div>
+
+    <script>
+        // WebSocket 部分
+        const APP_ID = 'YOUR_APP_ID_HERE'; // 替换为你的 app_id
+        const UID = 'YOUR_USER_ID_HERE'; // 替换为你的用户 ID
+
+        const ws = new WebSocket('wss://spark-openapi.cn-huabei-1.xf-yun.com/v1/assistants/assistant_id');
+
+        ws.onopen = function(event) {
+            const requestData = {
+                "header": {
+                    "app_id": APP_ID,
+                    "uid": UID
+                },
+                "parameter": {
+                    "chat": {
+                        "domain": "general",
+                        "temperature": 0.5,
+                        "top_k": 4,
+                        "max_tokens": 2028
+                    }
+                },
+                "payload": {
+                    "message": {
+                        "text": [
+                            {
+                                "role": "user",
+                                "content": "Hello"
+                            }
+                        ]
+                    }
+                }
+            };
+            ws.send(JSON.stringify(requestData));
+        };
+
+        function appendMessageToChatLog(message, isUser = false) {
+            const chatLog = document.getElementById('chat-log');
+            const messageDiv = document.createElement('div');
+            messageDiv.textContent = (isUser ? '我： ' : '助手： ') + message;
+            chatLog.appendChild(messageDiv);
+            chatLog.scrollTop = chatLog.scrollHeight; // 自动滚动到底部显示最新消息
+        }
+
+        ws.onmessage = function(event) {
+            const response = JSON.parse(event.data);
+            console.log('Received message:', response);
+            const assistantMessage = response.payload.choices.text[0].content;
+            appendMessageToChatLog(assistantMessage);
+        };
+
+        function sendMessage() {
+            const userInput = document.getElementById('user-input').value;
+            appendMessageToChatLog(userInput, true); // 将用户输入的消息显示在聊天框中，并显示“我：”
+            
+            const requestData = {
+                "header": {
+                    "app_id": APP_ID,
+                    "uid": UID
+                },
+                "parameter": {
+                    "chat": {
+                        "domain": "general",
+                        "temperature": 0.5,
+                        "top_k": 4,
+                        "max_tokens": 2028
+                    }
+                },
+                "payload": {
+                    "message": {
+                        "text": [
+                            {
+                                "role": "user",
+                                "content": userInput
+                            }
+                        ]
+                    }
+                }
+            };
+            ws.send(JSON.stringify(requestData));
+            document.getElementById('user-input').value = ''; // 清空输入框
+        }
+    </script>
+</body>
+</html>
