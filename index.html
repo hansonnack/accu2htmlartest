@@ -12,13 +12,18 @@
         }
         .logo {
             margin-top: 20px;
+            float: left; /* 将logo放在标题的左边 */
         }
         img.logo-image {
-            width: 30%; /* 调整 logo 大小为原来的 30% */
+            width: 10%; /* 调整 logo 大小为原来的 10% */
             height: auto;
         }
         h1 {
             font-family: 'Times New Roman', serif; /* 自定义标题字体 */
+            margin-left: 15%; /* 为标题留出空间，让其不被logo覆盖 */
+        }
+        .clear {
+            clear: both; /* 避免标题被logo覆盖 */
         }
         .iframe-container {
             border: 2px solid black;
@@ -45,8 +50,8 @@
         <!-- 在这里替换成你的 logo 图片链接 -->
         <img class="logo-image" src="https://fastly.jsdelivr.net/gh/hansonnack/accu2htmlartest@main/OIG.jpg" alt="Logo">
     </div>
-    </div>
     <h1>针灸取穴系统</h1>
+    <div class="clear"></div>
     <div class="iframe-container">
         <iframe src="https://xinghuo.xfyun.cn/bot" frameborder="0"></iframe>
     </div>
