@@ -1,100 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>针灸取穴系统</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        /* 类似博客首页的css样式 */
         body {
-            background-color: #D3D9E5;
-            text-align: center;
-            font-family: '黑体', sans-serif;
+            background-color: #ffffff; /* 背景色为：#D3D9E5 */
+            font-family: "微软雅黑"; /* 自定义标题字体 */
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        .content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            padding: 0;
         }
         h1 {
-            margin-top: 20px;
+            text-align: center; /* 居中标题 */
+            color: rgb(0, 0, 0);
+            font-size: 36px;
+            line-height: 100px;
+            margin: 0;
         }
-        .iframe-container {
-            border: 2px solid black;
-            margin: 20px auto;
-            width: 80%;
-            max-width: 800px;
-            height: 500px;
+        .header {
+            background-color: #b8daff; /* 修改背景色为蓝色 */
+            height: 100px;
         }
         iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+            border: 5px solid rgb(88, 140, 159); /* 嵌套网址并加入加粗边框 */
+            border-radius: 15px; /* 边框为圆角 */
+            width: 80%;
+            height: 500px;
+            margin: 20px auto;
+            display: block;
         }
-        .buttons-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        .button {
-            padding: 10px 20px;
-            border: 2px solid black;
-            text-decoration: none;
-            color: black;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-        }
-        .usdz-model-link .button svg,
-        .app-link .button svg {
-            margin-right: 10px;
-        }
-        .logo {
-            margin-top: auto;
-            margin-bottom: 20px;
+        .buttons {
             text-align: center;
         }
-        .logo-image {
-            width: 10%;
-            height: auto;
+        .button {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #007bff; /* 修改按钮背景色为蓝色 */
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+            margin: 10px;
+        }
+        .button:hover {background-color: #0056b3} /* 鼠标悬停颜色调整 */
+        .button:active {
+            background-color: #0056b3; /* 鼠标点击颜色调整 */
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+        .logo {
+            width: 40%; /* Logo大小为10% */
+            margin: 0 auto;
+            display: block;
+        }
+        .footer {
+            /* 移除底部背景色 */
+            height: 100px;
         }
     </style>
 </head>
 <body>
-    <h1>针灸取穴系统</h1>
-    <div class="content">
-        <div class="iframe-container">
-            <iframe src="https://xinghuo.xfyun.cn/botweb/2048144" frameborder="0"></iframe>
-        </div>
+    <div class="header">
+        <h1>针灸取穴系统</h1> <!-- 标题 -->
     </div>
-    <div class="buttons-container">
-        <div class="usdz-model-link">
-            <a href="https://fastly.jsdelivr.net/gh/hansonnack/accu2htmlartest@main/male-base-mesh.quads.usdz" class="button" target="_blank">
-                <?xml version="1.0" encoding="UTF-8"?>
-                <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- USDZ 模型图标 SVG -->
-                </svg>
-                查看人体穴位模型
-            </a>
-        </div>
-        <div class="app-link">
-            <a href="https://apps.apple.com/cn/app/%E7%A9%B4%E4%BD%8D%E8%AF%86%E5%88%ABar/id1626676536" class="button" target="_blank">
-                <?xml version="1.0" encoding="UTF-8"?>
-                <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- App 链接图标 SVG -->
-                </svg>
-                点击这里看看穴位在哪里
-            </a>
-        </div>
+    <iframe src="https://xinghuo.xfyun.cn/botweb/2048144"></iframe> <!-- 嵌套网址 -->
+    <div class="buttons">
+        <a href="https://fastly.jsdelivr.net/gh/hansonnack/accu2htmlartest@main/male-base-mesh.quads.usdz" class="button">查看人体穴位模型</a> <!-- usdz模型的超链接按钮 -->
+        <a href="https://apps.apple.com/cn/app/%E7%A9%B4%E4%BD%8D%E8%AF%86%E5%88%ABar/id1626676536" class="button">点击这里下载 App</a> <!-- 跳转到特定app的超链接 -->
     </div>
-    <div class="logo">
-        <img class="logo-image" src="https://fastly.jsdelivr.net/gh/hansonnack/accu2htmlartest@main/OIG.jpg" alt="Logo">
+    <div class="footer">
+        <img src="https://fastly.jsdelivr.net/gh/hansonnack/accu2htmlartest@main/OIG.jpg" class="logo" alt="Logo"> <!-- Logo -->
     </div>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 让页面的宽度自适应设备的宽度，并且将初始缩放比例设置为 1.0 -->
 </body>
 </html>
